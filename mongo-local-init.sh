@@ -11,9 +11,9 @@ if [ -n "${MONGO_INITDB_ROOT_USERNAME:-}" ] && [ -n "${MONGO_INITDB_ROOT_PASSWOR
         db.createUser({
             user: $(_js_escape "$MONGO_INITDB_ROOT_USERNAME"),
             pwd: $(_js_escape "$MONGO_INITDB_ROOT_PASSWORD"),
-            roles: [ 
-                { role: $(_js_escape "root"), db: $(_js_escape "admin") }, 
-                { role: "dbOwner", db: $(_js_escape "$MONGO_INITDB_DATABASE") } 
+            roles: [
+                { role: $(_js_escape "root"), db: $(_js_escape "admin") },
+                { role: "dbOwner", db: $(_js_escape "$MONGO_INITDB_DATABASE") }
                 ]
             })
 	EOJS

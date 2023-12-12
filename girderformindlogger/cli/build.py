@@ -21,6 +21,7 @@ if not six.PY3:
 _GIRDER_BUILD_ASSETS_PATH = os.path.realpath(resource_filename('girderformindlogger', 'web_client'))
 
 
+
 @click.command(name='build', help='Build web client static assets.')
 @click.option('--dev', default=False, is_flag=True, help='Alias for --mode=development')
 @click.option('--mode', type=click.Choice([ServerMode.PRODUCTION, ServerMode.DEVELOPMENT]),
@@ -69,7 +70,7 @@ def main(dev, mode, watch, watch_plugin, npm, reinstall):
         try:
             check_call(installCommand, cwd=staging)
         except FileNotFoundError:
-            check_call(installCommand, cwd=staging, shell=True)   
+            check_call(installCommand, cwd=staging, shell=True)
 
     quiet = '--no-progress=false' if sys.stdout.isatty() else '--no-progress=true'
     buildCommand = [

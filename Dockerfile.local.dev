@@ -1,17 +1,20 @@
 FROM ubuntu:18.04
 
-RUN apt-get update
-RUN apt-get install -y python3.6 \
-    git \
-    nodejs \
-    npm \
-    python3-pip
+RUN apt-get update && \
+    apt-get install -y curl
+
+# Install dependencies
+RUN apt-get install -y python3.6 git python3-pip
+
+# Install Node.js 16.x and npm 8.x
+RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - && \
+    apt-get install -y nodejs
 
 RUN pip3 install -U pip setuptools
 
 RUN mkdir /mindlogger-backend
 WORKDIR /mindlogger-backend
-#copy and install requirements early to allow faster rebuilds as these layers will be cached 
+#copy and install requirements early to allow faster rebuilds as these layers will be cached
 COPY ./requirements.txt ./requirements.txt
 RUN pip3 install -r requirements.txt
 

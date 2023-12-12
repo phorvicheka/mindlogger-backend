@@ -126,7 +126,7 @@ setup(
             'mount = girderformindlogger.cli.mount:main',
             'shell = girderformindlogger.cli.shell:main',
             'sftpd = girderformindlogger.cli.sftpd:main',
-            'build = girderformindlogger.cli.build:main'
+            'build = girderformindlogger.cli.build:main',
             're_encrypt = girderformindlogger.cli.re_encrypt:main'
         ]
     }
